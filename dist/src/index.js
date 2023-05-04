@@ -16,6 +16,7 @@ const express_1 = __importDefault(require("express"));
 const config_1 = __importDefault(require("config"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const connect_1 = __importDefault(require("./utils/connect"));
+const logger_1 = __importDefault(require("./utils/logger"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = config_1.default.get('port');
@@ -23,6 +24,6 @@ app.get('/', (req, res) => {
     res.send("Hello World");
 });
 app.listen(PORT, () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(`Server running at port ${PORT}`);
+    logger_1.default.info(`Server running at port ${PORT}`);
     yield (0, connect_1.default)();
 }));

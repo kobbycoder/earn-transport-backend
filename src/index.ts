@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import config from 'config';
 import dotenv from 'dotenv';
 import connect from './utils/connect';
+import logger from './utils/logger'
 
 dotenv.config()
 
@@ -14,6 +15,6 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 app.listen(PORT, async() => {
-    console.log(`Server running at port ${PORT}`);
+    logger.info(`Server running at port ${PORT}`);
     await connect();
 })

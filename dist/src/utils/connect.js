@@ -5,12 +5,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const config_1 = __importDefault(require("config"));
+const logger_1 = __importDefault(require("../utils/logger"));
 function connect() {
     mongoose_1.default.connect(config_1.default.get('dbUri'))
         .then(() => {
-        console.log('DB Connected!');
+        logger_1.default.info('DB Connected!');
     }).catch((e) => {
-        console.error(e);
+        logger_1.default.error(e);
         process.exit(1);
     });
 }
