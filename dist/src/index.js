@@ -17,12 +17,11 @@ const config_1 = __importDefault(require("config"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const connect_1 = __importDefault(require("./utils/connect"));
 const logger_1 = __importDefault(require("./utils/logger"));
+const routes_1 = __importDefault(require("./routes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = config_1.default.get('port');
-app.get('/', (req, res) => {
-    res.send("Hello World");
-});
+(0, routes_1.default)(app);
 app.listen(PORT, () => __awaiter(void 0, void 0, void 0, function* () {
     logger_1.default.info(`Server running at port ${PORT}`);
     yield (0, connect_1.default)();
